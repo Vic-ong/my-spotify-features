@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  #app {
+    @apply font-default text-sm text-dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    @apply text-link;
+    text-decoration: none;
+  }
+  i {
+    @apply flex justify-center items-center;
+  }
+  button {
+    @apply h-10 px-10 shadow-md rounded-md cursor-pointer text-sm text-light;
+    @apply duration-150 ease-in-out transform focus:outline-none active:scale-95;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+  .heading {
+    @apply font-semibold font-heading text-3xl lg-above:text-4xl;
+    letter-spacing: 1px;
+  }
+  .heading-2 {
+    @apply font-semibold font-heading text-xl lg-above:text-2xl;
+    letter-spacing: 1px;
+  }
+  .heading-3 {
+    @apply font-semibold font-heading text-base;
+    letter-spacing: 1px;
+  }
+
+  .hover-pop {
+    @apply transform duration-300 hover:scale-110;
+  }
+
+  /* Fade transition */
+  .transition-fade-enter-active, .transition-fade-leave-active {
+    transition: opacity .3s ease;
+  }
+  .transition-fade-enter, .transition-fade-leave-to {
+    opacity: 0;
+  }
+
+  /* Bounce transition */
+  .transition-pop-enter-active {
+    animation: pop-in .35s;
+  }
+  .transition-pop-leave-active {
+    animation: pop-in .2s reverse;
+  }
+  @keyframes pop-in {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}

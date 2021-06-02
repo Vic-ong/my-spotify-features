@@ -1,0 +1,64 @@
+<template>
+  <div class="w-screen h-16">
+    <HeaderMenu />
+  </div>
+
+  <!-- Appears after scroll -->
+  <div class="header-secondary z-50 w-screen h-16 bg-light">
+    <HeaderMenu />
+  </div>
+</template>
+
+<script lang="ts">
+  import { defineComponent } from 'vue';
+  import HeaderMenu from './HeaderMenu.vue';
+
+  export default defineComponent({
+    name: 'Header',
+    components: {
+      HeaderMenu,
+    },
+    setup() {
+      const body = document.body;
+      const scrollUp = 'scroll-up';
+      const scrollDown = 'scroll-down';
+      let lastScroll = 0;
+
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll <= 200) {
+          body.classList.remove(scrollUp);
+          return;
+        }
+        
+        if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
+          // Set down scroll class
+          body.classList.remove(scrollUp);
+          body.classList.add(scrollDown);
+        } else if (currentScroll < lastScroll && body.classList.contains(scrollDown)) {
+          // Set up scroll class
+          body.classList.remove(scrollDown);
+          body.classList.add(scrollUp);
+        }
+        lastScroll = currentScroll;
+      });
+    },
+  });
+</script>
+
+<style scoped>
+.header-secondary {
+  position: fixed;
+  top: -4rem;
+  left: 0;
+  right: 0;
+  transition: transform 0.4s;
+}
+.scroll-down .header-secondary {
+  transform: translate3d(0, 100%, 0);
+}
+.scroll-up .header-secondary {
+  transform: none;
+}
+</style>
