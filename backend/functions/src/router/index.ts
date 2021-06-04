@@ -1,11 +1,12 @@
 import Router, { IMiddleware } from 'koa-router';
 import querystring from 'querystring';
 import axios from 'axios';
+import { FUNCTION_BASE_URL } from '@/constants';
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
-const REDIRECT_URI = process.env.SPOTIFY_REDIRECT_URI;
+const REDIRECT_URI = `${FUNCTION_BASE_URL}/${process.env.SPOTIFY_REDIRECT_PATH}`;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
-const CLIENT_ENDPOINT = process.env.CLIENT_ENDPOINT;
+const CLIENT_AUTH_ENDPOINT = process.env.CLIENT_AUTH_ENDPOINT;
 
 declare module 'koa' {
   interface IncomingMessage {
@@ -65,12 +66,12 @@ router.get('/auth/callback', async (ctx) => {
     });
 
     if (res.data.error) {
-      ctx.redirect(`${CLIENT_ENDPOINT}/?${querystring.stringify({
+      ctx.redirect(`${CLIENT_AUTH_ENDPOINT}/?${querystring.stringify({
         state: ctx.query.state,
         error: res.data.error,
       })}`);
     } else {
-      ctx.redirect(`${CLIENT_ENDPOINT}/?${querystring.stringify({
+      ctx.redirect(`${CLIENT_AUTH_ENDPOINT}/?${querystring.stringify({
         state: ctx.query.state,
         access_token: res.data.access_token,
         refresh_token: res.data.refresh_token,
@@ -78,7 +79,7 @@ router.get('/auth/callback', async (ctx) => {
       })}`);
     }
   } else {
-    ctx.redirect(`${CLIENT_ENDPOINT}/?${querystring.stringify({
+    ctx.redirect(`${CLIENT_AUTH_ENDPOINT}/?${querystring.stringify({
       state: ctx.query.state,
       error: 'null_code',
     })}`);
