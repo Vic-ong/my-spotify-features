@@ -185,7 +185,6 @@ export const useSpotify = () => {
         `${BASE_URL}/audio-features?ids=${ids.slice(0, 100).join(',')}`,
         { headers },
       );
-      console.log(res.data);
       setData(stateKey, res.data);
     });
   };
