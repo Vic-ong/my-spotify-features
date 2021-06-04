@@ -66,7 +66,7 @@
       const icons = [
         {
           component: IconGithub,
-          link: 'https://github.com/Vic-ong',
+          link: 'https://github.com/Vic-ong/my-spotify-features',
         },
         {
           component: IconLinkedIn,
