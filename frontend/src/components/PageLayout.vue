@@ -26,14 +26,9 @@
       const route = useRoute();
 
       const showHeader = computed(() => route.name !== 'auth');
-      const backgroundImg = computed(() => {
-        const width = document.body.clientWidth;
-        return `https://images.unsplash.com/photo-1541667816405-e38aca4ca38d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=${width}&q=80`;
-      });
 
       return {
         showHeader,
-        backgroundImg,
       };
     },
   });
