@@ -31,7 +31,7 @@
             <div class="flex space-x-12 items-center">
               <div class="flex space-x-4 items-center">
                 <div>
-                  <i class="fi-sr-flame" />
+                  <IconFlame class="h-4 w-4" />
                 </div>
                 <div>
                   {{ item.popularity }}%
@@ -40,7 +40,7 @@
 
               <div class="flex space-x-4 items-center">
                 <div>
-                  <i class="fi-sr-users" />
+                  <IconUser class="h-4 w-4" />
                 </div>
                 <div>
                   {{ item.followers }}
@@ -58,9 +58,15 @@
   import { defineComponent, computed } from 'vue';
   import { useSpotify } from '@/services/spotify';
   import { TimeRange } from '@/services/types';
+  import IconFlame from '@/components/Icons/IconFlame.vue';
+  import IconUser from '@/components/Icons/IconUser.vue';
 
   export default defineComponent({
     name: 'UserTopArtists',
+    components: {
+      IconFlame,
+      IconUser,
+    },
     props: {
       range: {
         type: String,

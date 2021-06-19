@@ -25,7 +25,7 @@
           <template #features>
             <div class="flex space-x-4 items-center">
               <div>
-                <i class="fi-sr-flame" />
+                <IconFlame class="h-4 w-4" />
               </div>
               <div>
                 {{ item.popularity }}%
@@ -34,7 +34,7 @@
 
             <div class="flex space-x-4 items-center">
               <div>
-                <i class="fi-sr-calendar" />
+                <IconCalendar class="h-4 w-4" />
               </div>
               <div>
                 {{ item.album.releaseDate }}
@@ -52,11 +52,15 @@
   import dayjs from 'dayjs';
   import { useSpotify } from '@/services/spotify';
   import { useControls } from '@/services/controls';
+  import IconFlame from '@/components/Icons/IconFlame.vue';
+  import IconCalendar from '@/components/Icons/IconCalendar.vue';
   import TrackView from '@/components/TrackView.vue';
 
   export default defineComponent({
     name: 'UserTopTracks',
     components: {
+      IconFlame,
+      IconCalendar,
       TrackView,
     },
     setup() {

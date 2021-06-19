@@ -25,7 +25,7 @@
           <template #features>
             <div class="flex space-x-4 items-center">
               <div>
-                <i class="fi-sr-music-alt" />
+                <IconMusic class="h-4 w-4" />
               </div>
               <div>
                 {{ item.tracks.total }} tracks
@@ -42,11 +42,13 @@
   import { defineComponent, computed } from 'vue';
   import { useRouter } from 'vue-router';
   import { useSpotify } from '@/services/spotify';
+  import IconMusic from '@/components/Icons/IconMusic.vue';
   import TrackView from '@/components/TrackView.vue';
 
   export default defineComponent({
     name: 'Home',
     components: {
+      IconMusic,
       TrackView,
     },
     setup() {

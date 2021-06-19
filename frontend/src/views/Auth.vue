@@ -6,9 +6,9 @@
 
     <div
       v-else-if="status.error"
-      class="flex flex-col space-y-3 bg-gray rounded-md p-7 shadow-md"
+      class="flex flex-col items-center space-y-3 bg-gray rounded-md p-7 shadow-md"
     >
-      <i class="fi-sr-exclamation text-2xl text-error" />
+      <IconWarning class="h-5 w-5 fill-current text-error" />
       <div class="heading-2">
         Failed To Authenticate!
       </div>
@@ -54,12 +54,14 @@
   import dayjs from 'dayjs';
   import { login } from '@/services/auth';
   import Loader from '@/components/Loader.vue';
+  import IconWarning from '@/components/Icons/IconWarning.vue';
   import IconVinyl from '@/components/Icons/IconVinyl.vue';
 
   export default defineComponent({
     name: 'Auth',
     components: {
       Loader,
+      IconWarning,
       IconVinyl,
     },
     setup() {

@@ -20,8 +20,8 @@
         <slot name="error">
           <!-- Default error content -->
           <div class="max-w-md flex flex-col space-y-3">
-            <div class="flex justify-center space-x-3">
-              <i class="fi-sr-exclamation text-xl text-error" />
+            <div class="flex justify-center items-center space-x-3">
+              <IconWarning class="h-5 w-5 fill-current text-error" />
               <span class="heading-2">
                 Internal Error
               </span>
@@ -49,11 +49,13 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
+  import IconWarning from '@/components/Icons/IconWarning.vue';
   import Loader from '@/components/Loader.vue';
 
   export default defineComponent({
     name: 'PageContainer',
     components: {
+      IconWarning,
       Loader,
     },
     props: {

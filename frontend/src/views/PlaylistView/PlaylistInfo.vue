@@ -21,7 +21,7 @@
         <div class="flex space-x-5 md-above:space-x-12 items-center">
           <div class="flex space-x-4 items-center">
             <div>
-              <i class="fi-sr-music-alt" />
+              <IconMusic class="h-4 w-4" />
             </div>
             <div>
               {{ data.tracks }} tracks
@@ -30,7 +30,7 @@
 
           <div class="flex space-x-4 items-center">
             <div>
-              <i class="fi-sr-users" />
+              <IconUser class="h-4 w-4" />
             </div>
             <div>
               {{ data.followers }}
@@ -58,9 +58,15 @@
   import { defineComponent, computed, watchEffect } from 'vue';
   import { useSpotify } from '@/services/spotify';
   import { useControls } from '@/services/controls';
+  import IconMusic from '@/components/Icons/IconMusic.vue';
+  import IconUser from '@/components/Icons/IconUser.vue';
 
   export default defineComponent({
     name: 'PlaylistInfo',
+    components: {
+      IconMusic,
+      IconUser,
+    },
     setup() {
       const { playlist } = useSpotify();
       const { audio, getAudioElement } = useControls();

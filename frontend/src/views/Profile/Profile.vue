@@ -22,7 +22,7 @@
               <div class="heading-3">
                 {{ currentType }}
               </div>
-              <i class="fi-sr-caret-down" />
+              <IconCaretDown class="h-4 w-4" />
             </div>
 
             <transition
@@ -62,7 +62,7 @@
               <div class="heading-3">
                 {{ currentTimeRange }}
               </div>
-              <i class="fi-sr-caret-down" />
+              <IconCaretDown class="h-4 w-4" />
             </div>
 
             <transition
@@ -109,6 +109,7 @@
   import { defineComponent, computed, ref, reactive } from 'vue';
   import { useSpotify } from '@/services/spotify';
   import { TimeRange } from '@/services/types';
+  import IconCaretDown from '@/components/Icons/IconCaretDown.vue';
   import UserSummary from './UserSummary.vue';
   import UserTopTracks from './UserTopTracks.vue';
   import UserTopArtists from './UserTopArtists.vue';
@@ -121,6 +122,7 @@
   export default defineComponent({
     name: 'Profile',
     components: {
+      IconCaretDown,
       UserSummary,
     },
     setup() {
