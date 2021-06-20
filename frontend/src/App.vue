@@ -1,7 +1,7 @@
 <template>
   <router-view v-slot="{ Component }">
     <transition
-      name="transition-fade"
+      name="fade"
       mode="out-in"
     >
       <div v-if="status.loading">
@@ -13,7 +13,7 @@
 
       <PageLayout v-else>
         <transition
-          name="transition-fade"
+          name="fade"
           mode="out-in"
         >
           <component :is="Component" />
@@ -44,3 +44,31 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+  /* Fade transition */
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity .3s ease;
+  }
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  /* Bounce transition */
+  .pop-enter-active {
+    animation: pop-in .35s;
+  }
+  .pop-leave-active {
+    animation: pop-in .2s reverse;
+  }
+  @keyframes pop-in {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+</style>

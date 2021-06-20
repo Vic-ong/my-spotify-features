@@ -26,7 +26,7 @@
             </div>
 
             <transition
-              name="transition-pop"
+              name="pop"
               mode="out-in"
             >
               <div
@@ -66,7 +66,7 @@
             </div>
 
             <transition
-              name="transition-pop"
+              name="pop"
               mode="out-in"
             >
               <div
@@ -92,7 +92,7 @@
         </div>
 
         <transition
-          name="transition-fade"
+          name="fade"
           mode="out-in"
         >
           <component

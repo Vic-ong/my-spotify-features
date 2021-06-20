@@ -30,32 +30,7 @@
   .heading-3 {
     @apply font-bold font-default text-lg tracking-wide;
   }
-
   .hover-pop {
     @apply transform duration-300 hover:scale-125;
-  }
-
-  /* Fade transition */
-  .transition-fade-enter-active, .transition-fade-leave-active {
-    transition: opacity .3s ease;
-  }
-  .transition-fade-enter, .transition-fade-leave-to {
-    opacity: 0;
-  }
-
-  /* Bounce transition */
-  .transition-pop-enter-active {
-    animation: pop-in .35s;
-  }
-  .transition-pop-leave-active {
-    animation: pop-in .2s reverse;
-  }
-  @keyframes pop-in {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
   }
 }

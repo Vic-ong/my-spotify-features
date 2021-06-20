@@ -1,7 +1,7 @@
 <template>
   <div class="card-container p-2 md-above:p-5 rounded-lg flex sm-below:flex-col items-center sm-below:space-y-2 md-above:space-x-14 hover:bg-gray">
     <transition
-      name="transition-fade"
+      name="fade"
       mode="out-in"
     >
       <div
