@@ -1,5 +1,5 @@
 <template>
-  <Card>
+  <div class="p-3">
     <div class="flex flex-col items-center text-center space-y-7">
       <div>
         <img
@@ -42,6 +42,8 @@
       <div class="flex justify-center">
         <audio
           id="audio-controls"
+          :onplay="setAudioPlay"
+          :onpause="setAudioPause"
           controls
         >
           <source
@@ -51,7 +53,7 @@
         </audio>
       </div>
     </div>
-  </Card>
+  </div>
 </template>
 
 <script lang="ts">
@@ -69,7 +71,7 @@
     },
     setup() {
       const { playlist } = useSpotify();
-      const { audio, getAudioElement } = useControls();
+      const { audio, getAudioElement, setAudioPlay, setAudioPause } = useControls();
 
       const data = computed(() => {
         const { data } = playlist.value;
@@ -84,12 +86,13 @@
 
       watchEffect(() => {
         const el = getAudioElement('audio-controls');
+        const { src, pause } = audio.value.data;
         const audioSrcEl = document.getElementById('audio-source') as HTMLSourceElement;
-        const audioSrc = audio.value.data.src;
-        if (el && !el.onplaying && audioSrc) {
+        if (el && !el.onplaying && src && !pause) {
           el.load();
           el.play();
-        } else if (el && audioSrcEl && !el.paused && audioSrc === '') {
+          setAudioPlay();
+        } else if (el && audioSrcEl && !el.paused && pause) {
           el.pause();
         }
       });
@@ -97,6 +100,8 @@
       return {
         data,
         audio,
+        setAudioPause,
+        setAudioPlay,
       };
     },
   });

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-14 px-10 flex items-center justify-between">
+  <div class="h-20 px-10 flex items-center justify-between">
     <div class="hover-pop">
       <router-link :to="{ name: 'home' }">
         <IconVinyl
@@ -9,7 +9,7 @@
       </router-link>
     </div>
 
-    <div class="flex items-center space-x-10 heading-3">
+    <div class="flex items-center space-x-10 heading-2">
       <router-link
         v-for="item in items"
         :key="item.key"
@@ -23,7 +23,7 @@
     </div>
 
     <div
-      class="hover-pop cursor-pointer heading-3"
+      class="hover-pop cursor-pointer heading-2"
       @click="logoutHandler"
     >
       Logout

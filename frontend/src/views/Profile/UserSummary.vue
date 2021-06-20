@@ -18,7 +18,7 @@
         :key="item.name"
         class="flex flex-col items-center"
       >
-        <div class="heading-3">
+        <div class="font-bold">
           {{ item.name }}
         </div>
         <div>{{ item.value }}</div>
@@ -28,6 +28,8 @@
     <div class="flex justify-center">
       <audio
         id="audio-controls"
+        :onplay="setAudioPlay"
+        :onpause="setAudioPause"
         controls
       >
         <source
@@ -48,7 +50,7 @@
     name: 'UserSummary',
     setup() {
       const { profile, playlists } = useSpotify();
-      const { audio, getAudioElement } = useControls();
+      const { audio, getAudioElement, setAudioPlay, setAudioPause } = useControls();
 
       const profileUrl = computed(() => profile.value.data.external_urls.spotify);
       const profilePicture = computed(() => profile.value.data.images[0].url);
@@ -69,12 +71,13 @@
 
       watchEffect(() => {
         const el = getAudioElement('audio-controls');
+        const { src, pause } = audio.value.data;
         const audioSrcEl = document.getElementById('audio-source') as HTMLSourceElement;
-        const audioSrc = audio.value.data.src;
-        if (el && !el.onplaying && audioSrc) {
+        if (el && !el.onplaying && src && !pause) {
           el.load();
           el.play();
-        } else if (el && audioSrcEl && !el.paused && audioSrc === '') {
+          setAudioPlay();
+        } else if (el && audioSrcEl && !el.paused && pause) {
           el.pause();
         }
       });
@@ -84,6 +87,8 @@
         profilePicture,
         profileSummary,
         audio,
+        setAudioPlay,
+        setAudioPause,
       };
     },
   });

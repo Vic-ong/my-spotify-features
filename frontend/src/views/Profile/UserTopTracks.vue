@@ -10,7 +10,10 @@
         class="cursor-pointer"
         @click="toggleAudio(index)"
       >
-        <TrackView :src="item.album.img">
+        <TrackView
+          :src="item.album.img"
+          :active="audio.data.src === item.audioPreview && !audio.data.pause"
+        >
           <template #title>
             <div>
               <div class="font-bold">
@@ -65,7 +68,7 @@
     },
     setup() {
       const { topTracks } = useSpotify();
-      const { audio, setAudioTrack } = useControls();
+      const { audio, setAudioTrack, setAudioPause } = useControls();
 
       const loading = computed(() => topTracks.value.loading);
       const error = computed(() => topTracks.value.error);
@@ -87,15 +90,14 @@
 
       const toggleAudio = (index: number) => {
         const { data } = audio.value;
-        if (data.src === tracks.value[index].audioPreview) {
-          setAudioTrack({
-            name: '',
-            src: '',
-          });
+
+        if (data.src === tracks.value[index].audioPreview && !data.pause) {
+          setAudioPause();
         } else {
           setAudioTrack({
             name: tracks.value[index].name,
             src: tracks.value[index].audioPreview || '',
+            pause: false,
           });
         }
       };
@@ -103,6 +105,7 @@
       return {
         loading,
         error,
+        audio,
         tracks,
         toggleAudio,
       };

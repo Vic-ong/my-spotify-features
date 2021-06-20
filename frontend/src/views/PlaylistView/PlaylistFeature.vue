@@ -1,26 +1,26 @@
 <template>
-  <Card>
+  <div class="px-3">
     <PageContainer
       :loading="loading"
       :error="error"
       container
-      class="h-full w-full"
+      class="h-full w-full text-center"
     >
       <div>
-        <div class="heading-3">
-          Playlist Features
+        <div class="font-bold">
+          Playlist Audio Features
         </div>
         <div class="flex justify-center">
           <Chart
             type="radar"
             :options="chartOptions"
             :data="chartData"
-            class="w-80 h-80"
+            class="h-80 w-80"
           />
         </div>
       </div>
     </PageContainer>
-  </Card>
+  </div>
 </template>
 
 <script lang="ts">
@@ -111,7 +111,7 @@
           tooltip: {
             callbacks: {
               label({ raw }: { raw: number }) {
-                return `${raw * 100}%`;
+                return `${(raw * 100).toFixed(0)}%`;
               },
             },
           },

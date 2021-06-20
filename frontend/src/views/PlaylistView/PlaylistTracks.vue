@@ -7,7 +7,10 @@
         class="cursor-pointer"
         @click="toggleAudio(index)"
       >
-        <TrackView :src="item.album.img">
+        <TrackView
+          :src="item.album.img"
+          :active="audio.data.src === item.audioPreview && !audio.data.pause"
+        >
           <template #title>
             <div>
               <div class="font-bold">
@@ -62,39 +65,39 @@
     },
     setup() {
       const { playlist } = useSpotify();
-      const { audio, setAudioTrack } = useControls();
+      const { audio, setAudioTrack, setAudioPause } = useControls();
 
       const tracks = computed(
         () => playlist.value.data?.tracks.items.map((item) => ({
           name: item.track.name,
-            artist: item.track.artists[0]?.name,
-            album: {
-              name: item.track.album.name,
-              img: item.track.album.images[0]?.url,
-              releaseDate: dayjs(item.track.album.release_date).format('MMM YYYY'),
-            },
-            popularity: item.track.popularity,
-            audioPreview: item.track.preview_url,
-            duration: item.track.duration_ms,
+          artist: item.track.artists[0]?.name,
+          album: {
+            name: item.track.album.name,
+            img: item.track.album.images[0]?.url,
+            releaseDate: dayjs(item.track.album.release_date).format('MMM YYYY'),
+          },
+          popularity: item.track.popularity,
+          audioPreview: item.track.preview_url,
+          duration: item.track.duration_ms,
         })) || [],
       );
 
       const toggleAudio = (index: number) => {
         const { data } = audio.value;
-        if (data.src === tracks.value[index].audioPreview) {
-          setAudioTrack({
-            name: '',
-            src: '',
-          });
+
+        if (data.src === tracks.value[index].audioPreview && !data.pause) {
+          setAudioPause();
         } else {
           setAudioTrack({
             name: tracks.value[index].name,
             src: tracks.value[index].audioPreview || '',
+            pause: false,
           });
         }
       };
 
       return {
+        audio,
         tracks,
         toggleAudio,
       };

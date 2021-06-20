@@ -4,12 +4,9 @@
     :error="error"
   >
     <div class="px-10 grid gap-4">
-      <div class="grid grid-cols-5 gap-4">
-        <PlaylistInfo class="col-span-2" />
-        <PlaylistFeature
-          :ids="trackIds"
-          class="col-span-3"
-        />
+      <div class="flex justify-center space-x-3">
+        <PlaylistInfo />
+        <PlaylistFeature :ids="trackIds" />
       </div>
 
       <PlaylistTracks />

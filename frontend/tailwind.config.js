@@ -13,23 +13,23 @@ module.exports = {
   theme: {
     fontFamily: {
       default: ['Source Sans Pro', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
-      heading: ['Alata', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
+      heading: ['Marck Script', 'Bradley Hand', 'Brush Script MT', 'Comic Sans MS', 'cursive'],
     },
     colors: {
       // font color
-      light: '#FFFFFF',
-      dark: '#242424',
-      link: '#2196F3',
+      light: '#F4F4F4',
+      dark: '#182322',
+      link: '#53B5BB',
       error: '#E74C3C',
+      transparent: 'transparent',
       // branding colors
-      primary: '#2196F3',
+      primary: '#EEBB2E',
       background: {
-        1: '#E4F3F2',
-        2: '#EFF3F2',
-        3: '#F9FAF1',
+        1: '#F9E4F0',
+        2: '#E7F0F0',
       },
       gray: {
-        DEFAULT: '#F5F5F5',
+        DEFAULT: '#E9E9E9',
         darken: '#4D4D4D',
       },
     },
@@ -54,7 +54,11 @@ module.exports = {
       'portrait': { 'raw': '(orientation: portrait)' },
       'landscape': { 'raw': '(orientation: landscape)' },
     },
-    extend: {},
+    extend: {
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+       },
+    },
   },
   variants: {
     extend: {

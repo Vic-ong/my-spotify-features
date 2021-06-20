@@ -1,10 +1,10 @@
 <template>
-  <div class="w-screen h-16">
+  <div class="w-screen">
     <HeaderMenu />
   </div>
 
   <!-- Appears after scroll -->
-  <div class="header-secondary z-50 w-screen h-16 bg-light">
+  <div class="header-secondary z-50 w-screen bg-light">
     <HeaderMenu />
   </div>
 </template>
@@ -50,7 +50,7 @@
 <style scoped>
 .header-secondary {
   position: fixed;
-  top: -4rem;
+  top: -5rem;
   left: 0;
   right: 0;
   transition: transform 0.4s;

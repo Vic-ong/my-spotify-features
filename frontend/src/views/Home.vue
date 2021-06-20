@@ -7,7 +7,6 @@
       <div
         v-for="item in items"
         :key="item.id"
-        class="flex space-x-4"
       >
         <TrackView
           :src="item.img"

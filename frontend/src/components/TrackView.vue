@@ -1,19 +1,37 @@
 <template>
   <div class="card-container p-2 md-above:p-5 rounded-lg flex sm-below:flex-col items-center sm-below:space-y-2 md-above:space-x-14 hover:bg-gray">
-    <div class="relative">
-      <div class="vinyl-cover relative z-10 shadow-md">
-        <img
-          :src="src"
-          class="h-28 w-28 sm-below:h-16 sm-below:w-16 object-cover"
-        >
-      </div>
-      <div class="vinyl absolute top-1 left-1 inset-0 sm-below:hidden">
+    <transition
+      name="transition-fade"
+      mode="out-in"
+    >
+      <div
+        v-if="active"
+        class="h-28 w-28 flex justify-center items-center"
+      >
         <IconVinylDisc
           width="104"
           height="104"
+          class="animate-spin-slow"
         />
       </div>
-    </div>
+      <div
+        v-else
+        class="relative"
+      >
+        <div class="vinyl-cover relative z-10 shadow-md">
+          <img
+            :src="src"
+            class="h-28 w-28 sm-below:h-16 sm-below:w-16 object-cover"
+          >
+        </div>
+        <div class="vinyl absolute top-1 left-1 inset-0 sm-below:hidden">
+          <IconVinylDisc
+            width="104"
+            height="104"
+          />
+        </div>
+      </div>
+    </transition>
 
     <div class="flex flex-col sm-below:items-center space-y-2 md-above:space-y-5 sm-below:text-center">
       <slot name="title" />
@@ -38,6 +56,10 @@
       src: {
         type: String,
         required: true,
+      },
+      active: {
+        type: Boolean,
+        default: false,
       },
     },
   });

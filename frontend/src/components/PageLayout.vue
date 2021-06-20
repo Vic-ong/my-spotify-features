@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div class="fixed z-0 inset-0 h-screen w-screen bg-gradient-to-t from-background-1 via-background-2 to-background-3" />
-
+    <div class="fixed z-0 inset-0 h-screen w-screen bg-gradient-to-t from-background-1 via-background-2 to-background-2" />
     <Header v-if="showHeader" />
     <div
       class="absolute z-10 w-screen"

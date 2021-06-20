@@ -9,7 +9,7 @@
       class="flex flex-col items-center space-y-3 bg-gray rounded-md p-7 shadow-md"
     >
       <IconWarning class="h-5 w-5 fill-current text-error" />
-      <div class="heading-2">
+      <div class="heading-3">
         Failed To Authenticate!
       </div>
       <div>

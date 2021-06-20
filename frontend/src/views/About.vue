@@ -1,45 +1,39 @@
 <template>
-  <div class="flex flex-col items-center text-center">
-    <div class="heading-2">
+  <div class="flex flex-col items-center text-center space-y-12">
+    <div class="mt-12 heading-2">
       About this project
     </div>
 
-    <div class="mt-12 max-w-xl flex flex-col space-y-7">
-      <div class="heading-3">
-        I wanted to be familiarized with the
+    <div class="max-w-xl flex flex-col items-center text-left space-y-7">
+      <div>
+        A full-stack application to showcase a conceptual design of the Spotify app. I wanted to create visuals that trigger nostalgic reminiscence of the old-school ways of listening to music, using vinyl. Functionality wise, I wanted to analyze and display top music and audio features using
         <a
           href="https://developer.spotify.com/"
           target="_blank"
         >
           Spotify API.
         </a>
-        The goal is to utilize the API to provide interesting
-        insights about a user's playlists and implement the
-        <a
-          href="https://developer.spotify.com/documentation/general/guides/authorization-guide/"
-          target="_blank"
-        >
-          Spotify authentication flow.
-        </a>
       </div>
 
       <div>
-        <span class="heading-3">Frontend:</span>
-        Vite, Vue 3, Typescript, Tailwind CSS
-      </div>
+        <div>
+          <span class="font-bold">Frontend:</span>
+          Vite, Vue 3, Typescript, Tailwind CSS
+        </div>
 
-      <div>
-        <span class="heading-3">Backend:</span>
-        NodeJS, Koa, Typescript
-      </div>
+        <div>
+          <span class="font-bold">Backend:</span>
+          NodeJS, Koa, Typescript
+        </div>
 
-      <div>
-        <span class="heading-3">Cloud Services:</span>
-        Firebase Hosting, Cloud Functions
+        <div>
+          <span class="font-bold">Cloud Services:</span>
+          Firebase Hosting, Cloud Functions
+        </div>
       </div>
     </div>
 
-    <hr class="w-60 my-12 border border-dark">
+    <hr class="w-60 border border-dark">
 
     <div class="flex justify-center items-center space-x-14">
       <a

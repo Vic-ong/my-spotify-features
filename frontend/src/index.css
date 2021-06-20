@@ -4,38 +4,35 @@
 
 @layer base {
   #app {
-    @apply font-default text-sm text-dark;
+    @apply font-default text-base text-dark;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   a {
-    @apply text-link;
+    @apply text-link hover:underline;
     text-decoration: none;
   }
   i {
     @apply flex justify-center items-center;
   }
   button {
-    @apply h-10 px-10 shadow-md rounded-md cursor-pointer text-sm text-light;
+    @apply h-10 px-10 shadow-md rounded-md cursor-pointer font-bold text-sm text-dark;
     @apply duration-150 ease-in-out transform focus:outline-none active:scale-95;
     text-decoration: none;
     letter-spacing: 0.5px;
   }
   .heading {
-    @apply font-semibold font-heading text-3xl lg-above:text-4xl;
-    letter-spacing: 1px;
+    @apply font-bold font-heading text-4xl lg-above:text-5xl;
   }
   .heading-2 {
     @apply font-semibold font-heading text-xl lg-above:text-2xl;
-    letter-spacing: 1px;
   }
   .heading-3 {
-    @apply font-semibold font-heading text-base;
-    letter-spacing: 1px;
+    @apply font-bold font-default text-lg tracking-wide;
   }
 
   .hover-pop {
-    @apply transform duration-300 hover:scale-110;
+    @apply transform duration-300 hover:scale-125;
   }
 
   /* Fade transition */

@@ -16,6 +16,7 @@ interface StateObject {
 interface AudioControls {
   name: string;
   src: string;
+  pause: boolean;
 }
 
 const state = reactive<StateObject>({
@@ -25,6 +26,7 @@ const state = reactive<StateObject>({
     data: {
       name: '',
       src: '',
+      pause: false,
     },
   },
 });
@@ -62,10 +64,21 @@ export const useControls = () => {
   const setAudioTrack = async (params: AudioControls) => {
     const stateKey = State.Audio;
     await executeAction(stateKey, () => {
-      setData(stateKey, {
-        name: params.name,
-        src: params.src,
-      });
+      setData(stateKey, params);
+    });
+  };
+
+  const setAudioPause = () => {
+    const stateKey = State.Audio;
+    executeAction(stateKey, () => {
+      state[stateKey].data.pause = true;
+    });
+  };
+
+  const setAudioPlay = () => {
+    const stateKey = State.Audio;
+    executeAction(stateKey, () => {
+      state[stateKey].data.pause = false;
     });
   };
 
@@ -76,5 +89,7 @@ export const useControls = () => {
     // actions
     getAudioElement,
     setAudioTrack,
+    setAudioPause,
+    setAudioPlay,
   };
 };
