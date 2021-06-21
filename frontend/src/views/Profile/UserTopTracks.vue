@@ -90,13 +90,16 @@
 
       const toggleAudio = (index: number) => {
         const { data } = audio.value;
+        const sample = tracks.value[index].audioPreview;
 
-        if (data.src === tracks.value[index].audioPreview && !data.pause) {
+        if (!sample) {
+          alert('Spotify has removed the audio sample of this track 😔\nThis typically occurs when the song has low popularity.\nPlease choose another track.');
+        } else if (data.src === sample && !data.pause) {
           setAudioPause();
         } else {
           setAudioTrack({
             name: tracks.value[index].name,
-            src: tracks.value[index].audioPreview || '',
+            src: sample || '',
             pause: false,
           });
         }
