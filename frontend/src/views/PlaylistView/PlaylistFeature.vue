@@ -1,5 +1,5 @@
 <template>
-  <div class="px-3">
+  <div>
     <PageContainer
       :loading="loading"
       :error="error"
@@ -15,7 +15,7 @@
             type="radar"
             :options="chartOptions"
             :data="chartData"
-            class="h-80 w-80"
+            class="h-72 w-72 md-above:h-80 md-above:w-80"
           />
         </div>
       </div>

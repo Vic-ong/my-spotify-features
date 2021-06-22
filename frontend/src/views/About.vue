@@ -4,7 +4,7 @@
       About this project
     </div>
 
-    <div class="max-w-xl flex flex-col items-center text-left space-y-7">
+    <div class="md-above:max-w-xl flex flex-col items-center text-left px-7 space-y-7">
       <div>
         A full-stack application to showcase a conceptual design of the Spotify app. I wanted to create visuals that trigger nostalgic reminiscence of the old-school ways of listening to music, using vinyl. Functionality wise, I wanted to analyze and display top music and audio features using
         <a

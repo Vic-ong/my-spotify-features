@@ -4,7 +4,7 @@
     :error="error"
   >
     <div class="px-10 grid gap-4">
-      <div class="flex justify-center space-x-3">
+      <div class="flex sm-below:flex-col sm-below:items-center justify-center md-above:space-x-3">
         <PlaylistInfo />
         <PlaylistFeature :ids="trackIds" />
       </div>

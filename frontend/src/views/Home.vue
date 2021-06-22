@@ -3,7 +3,7 @@
     :loading="loading"
     :error="error"
   >
-    <div class="grid grid-cols-3 gap-4 px-10">
+    <div class="grid grid-cols-2 md-above:grid-cols-3 gap-4 px-10">
       <div
         v-for="item in items"
         :key="item.id"
