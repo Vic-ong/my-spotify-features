@@ -1,30 +1,19 @@
 <template>
   <router-view v-slot="{ Component }">
-    <transition
-      name="fade"
-      mode="out-in"
-    >
-      <div v-if="status.loading">
-        loading...
-      </div>
-      <div v-else-if="status.error">
-        error!
-      </div>
-
-      <PageLayout v-else>
-        <transition
-          name="fade"
-          mode="out-in"
-        >
-          <component :is="Component" />
-        </transition>
-      </PageLayout>
-    </transition>
+    <PageLayout>
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <component :is="Component" />
+      </transition>
+    </PageLayout>
   </router-view>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
+import { initBreakpoints } from './composables/breakpoints';
 import PageLayout from '@/components/PageLayout.vue';
 
 export default defineComponent({
@@ -33,12 +22,14 @@ export default defineComponent({
     PageLayout,
   },
   setup() {
+    const view = initBreakpoints();
     const status = reactive({
       loading: false,
       error: false,
     });
 
     return {
+      view,
       status,
     };
   },
