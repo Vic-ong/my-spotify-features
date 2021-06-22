@@ -1,5 +1,6 @@
 import { App } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
+import { checkExpired } from '@/services/auth';
 import Auth from '@/views/Auth.vue';
 import About from '@/views/About.vue';
 import Home from '@/views/Home.vue';
@@ -60,13 +61,16 @@ export const registerRouter = (app: App): void => {
   });
   
   router.beforeEach((to, from, next) => {
+    const isExpired = checkExpired();
+    const accessToken = localStorage.getItem('access_token');
+
     if (to.matched.some((record) => record.meta.requiresAuth)) {
-      if (localStorage.getItem('access_token') == null) {
+      if (accessToken == null || isExpired) {
         next({ name: 'auth' });
       } else {
         next();
       }
-    } else if (to.path === '/auth' && !!localStorage.getItem('access_token')) {
+    } else if (to.path === '/auth' && !!accessToken && !isExpired) {
       next({ name: 'home' });
     } else {
       next();
